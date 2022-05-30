@@ -1,14 +1,16 @@
 -- Example bimg file with every metadata field filled out.
 {
   {
-    "First Line",
-    "0000000000",
-    "ffffffffff",
-  },
-  {
-    "Bimg Image",
-    "dddd0aaaaa",
-    "ffffffffff",
+    {
+      "First Line",
+      "0000000000",
+      "ffffffffff",
+    },
+    {
+      "Bimg Image",
+      "dddd0aaaaa",
+      "ffffffffff",
+    },
   },
   version = "1.0.0",
   animation = false,
