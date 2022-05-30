@@ -12,7 +12,7 @@ Metadata is stored at the root of the table.
 `animation`: boolean Whether the image is an animation (if so, each frame is numerically indexed).  
 (per frame) `duration`: number Duration of the frame in seconds, overrides `secondsPerFrame` for that frame.  
 `secondsPerFrame`: number Default length of each frame in seconds.  
-`palette`: table Table of palette colors. In format of [colors api](https://tweaked.cc/module/colors.html) (key: color number - value: RGB float table OR 24bit color integer (#0xRRGGBB))  
+`palette`: table Table of palette colors. In format of colors api (key: color number - value: EITHER table of 3 ranged 0-1 floats for each RGB component, OR a single item which is the hex-formatted number #RRGGBB)  
 
 `title`: string Original title of the image.  
 `description`: Long form description of the file.  
