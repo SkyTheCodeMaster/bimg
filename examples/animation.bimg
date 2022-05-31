@@ -46,9 +46,9 @@
     [colors.green] = { 0x57a64e },
     [colors.black] = { 0x000000 },
   },
-  title = "Example",
-  description = "This is an example of the .bimg format, a universal ComputerCraft image.",
+  title = "Example Animation",
+  description = "This is an example of the .bimg animation format, a universal ComputerCraft image.",
   author = "SkyTheCodeMaster",
   creator = "Keyboard and Mouse",
-  date = "2022-05-30T22:53:11+0000",
+  date = "2022-05-31T03:09:27+0000",
 }
