@@ -40,11 +40,13 @@
   version = "1.0.0",
   animation = true, -- Important for animations!
   secondsPerFrame = 0.2, -- 0.2 seconds per frame (5FPS) as the default delay between drawing each frame.
-  palette = { -- Only defining the colours required, but can define all if needed.
-    [colors.white] = { 0xffffff },
-    [colors.purple] = { 0xb266e5 },
-    [colors.green] = { 0x57a64e },
-    [colors.black] = { 0x000000 },
+  palette = {
+    { -- Only defining the colours required, but can define all if needed.
+      [colors.white] = { 0xffffff },
+      [colors.purple] = { 0xb266e5 },
+      [colors.green] = { 0x57a64e },
+      [colors.black] = { 0x000000 },
+    } -- Only defining a palette for the first frame, all frames afterwards will use this palette
   },
   title = "Example Animation",
   description = "This is an example of the .bimg animation format, a universal ComputerCraft image.",
