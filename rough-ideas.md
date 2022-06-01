@@ -14,7 +14,7 @@ Metadata is stored at the root of the table.
 (per frame) `duration`: number Duration of the frame in seconds, overrides `secondsPerFrame` for that frame.  
 `secondsPerFrame`: number Default length of each frame in seconds.  
 `palette`: table Palette table in format of colors api (key: color number - value: EITHER table of 3 ranged 0-1 floats for each RGB component, OR a single item which is the hex-formatted number #RRGGBB). This will serve as the starting palette for any animations or images.   
-(per frame) `palette`: table Per frame palette, set before drawing the frame.
+(per frame) `palette`: table Per frame palette, set before drawing the frame. Same format as the root `palette`.
 
 `title`: string Original title of the image.  
 `description`: Long form description of the file.  
