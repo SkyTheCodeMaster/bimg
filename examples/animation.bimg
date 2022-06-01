@@ -44,7 +44,7 @@
     [colors.white] = { 0xffffff },
     [colors.purple] = { 0xb266e5 },
     [colors.green] = { 0x57a64e },
-    [colors.black] = { 0x000000 },
+    [colors.black] = { 0x000000 }, -- Only defining a default palette
   },
   title = "Example Animation",
   description = "This is an example of the .bimg animation format, a universal ComputerCraft image.",
