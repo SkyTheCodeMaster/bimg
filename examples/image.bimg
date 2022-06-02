@@ -12,7 +12,7 @@
       "ffffffffff",
     },
   },
-  version = "1.0.0",
+  version = 0.1,
   animation = false,
   palette = { -- Only defining the colours required, but can define all if needed.
     [colors.white] = { 0xffffff },

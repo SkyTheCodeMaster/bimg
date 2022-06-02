@@ -37,7 +37,7 @@
       "ffffffffff",
     },
   },
-  version = "1.0.0",
+  version = 0.1, -- Current pre-release version
   animation = true, -- Important for animations!
   secondsPerFrame = 0.2, -- 0.2 seconds per frame (5FPS) as the default delay between drawing each frame.
   palette = { -- Only defining the colours required, but can define all if needed.
