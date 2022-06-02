@@ -9,7 +9,7 @@ Each frame can have a `palette` key to specify a specific palette for that frame
   
 # Metadata
 Metadata is stored at the root of the table.    
-`version`: number Version of the format as `major.minor` where each major version represents a change to the format that may break compatibility with existing software.
+`version`: number Version of the format as `major.minor` where each major version represents a change to the format that may break compatibility with existing software.   
 `animation`: boolean Whether the image is an animation (if so, each frame is numerically indexed).  
 (per frame) `duration`: number Duration of the frame in seconds, overrides `secondsPerFrame` for that frame.  
 `secondsPerFrame`: number Default length of each frame in seconds.  
