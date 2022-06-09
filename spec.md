@@ -27,6 +27,7 @@ bimg stores the following metadata along the image data in the file.
 | (if animation) `secondsPerFrame` | `number` | Default length of each frame in seconds.
 | `palette` | `table` | Color palette table applied to the whole set of frames. For more information on palette formats, see [Palettes](#palettes).
 
+All metadata fields are optional, besides the `animation` field. When that field is set to `true`, the `secondsPerFrame` field becomes required too.
 
 # Image Data
 Aside the metadata are stored the frames of the image. At least one frame must be present for the file to be considered valid.
