@@ -23,6 +23,8 @@ bimg stores the following metadata along the image data in the file.
 | `description` | `string` | Description of the image. Set by the author. |
 | `creator` | `string` | Software that created the image. |
 | `date` | `string` | Date and time the image was created on, in ISO-8601 format. |
+| `width` | `number` | Width of the image in characters. |
+| `height` | `number` | Height of the image in characters. |
 | `animation` | `boolean` | Whether the file contains multiple frames and can be interpreted as an [animation](#animations).
 | (if animation) `secondsPerFrame` | `number` | Default length of each frame in seconds.
 | `palette` | `table` | Color palette table applied to the whole set of frames. For more information on palette formats, see [Palettes](#palettes).
