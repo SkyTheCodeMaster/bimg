@@ -43,7 +43,15 @@ When the image is an animation, an optional `duration` field can also be provide
 
 ![Frame Data](images/frame-structure.png)
 
-Each line is composed of three `string` values forming a blit table, that can be unpacked directly to `term.blit` when rendering the image. Spaces in the background blit string should be treated as transparent, where transparent pixels should take the already existing background color upon rendering.
+Each line is composed of three `string` values forming a blit table, that can be unpacked directly to `term.blit` when rendering the image.
+
+Spaces in any of the blit strings should make the corresponding color of the pixel transparent, according to the following rules:
+| Foreground | Background | Result |
+|:-:|:-:|---|
+| Colored | Colored | The pixel is rendered as is, using the colors set in the blit strings. No transparency is applied. |
+| Colored | Transparent | The background color of the pixel that is about to be replaced is used as the new background color. |
+| Transparent | Colored | The background color of the pixel that is about to be replaced is used as the new foreground color. |
+| Transparent | Transparent | The pixel is not rendered.
 
 ## Animations
 bimg can support multiple frames per image file. Each frame is numerically indexed at the root of the table, along the metadata. This allows easy retrieval with `ipairs`.
