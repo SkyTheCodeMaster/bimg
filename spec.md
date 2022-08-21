@@ -1,11 +1,13 @@
 # bimg File Format Specification
+Version X.Y.Z (yyyy-MM-dd)
+
 bimg (abbreviation of "blit image") is a versatile image format for the ComputerCraft Minecraft mod.
 This specification aims to provide a standardized image format that can be easily implemented and used throughout the entire ComputerCraft ecosystem.
 
 # File Structure
 The examples shown throughout this specification are based on a sample image file, serialized using `textutils.serialize`.
 
-An image file can be separated into two sections: metadata and frame data:
+An image file can be separated into two sections: metadata and frame data. These two sections are unordered, meaning that they can be correctly written and read by parsers regardless of whether the metadata or the frame data comes first:
 ![Format overview](images/file-structure.png?raw=true)
 
 Metadata contains information about the image itself, while the remaining of the file contains one or more frames, representing the images.
@@ -39,7 +41,7 @@ For animation support, see [Animations](#animations).
 A single frame is composed of multiple numerically-indexed tables, each representing a single line of the image.
 Additionally, an optional per-frame palette can be provided to alter the colors of that frame only. For more information on palettes, see [Palettes](#palettes).
 
-When the image is an animation, an optional `duration` field can also be provided. This field overrides the `secondsPerFrame` field set in the metadata, and therefore sets a specific duration for that frame only.
+When the image is an animation, an optional `duration` field can also be provided. This field overrides the `secondsPerFrame` field set in the metadata, and therefore sets a specific duration (in seconds) for that frame only.
 
 ![Frame Data](images/frame-structure.png)
 
@@ -62,7 +64,7 @@ In the event multiple frames are provided, the image is considered as an animati
 Palettes allows the modification of the existing 16 ComputerCraft colors available in the `colors` API to custom RGB values, applied to the whole terminal at once.
 bimg allows the use of such palettes to render images more realistically, allowing for image effects (like dithering) to be applied.
 
-Palettes are formatted as a table, where the keys corresponds to the ComputerCraft color values, and the values the new RGB colors to apply.
+Palettes are formatted as a table, where the keys corresponds to the indexes of the ComputerCraft color values (ranged from 0 to 15), and the values the new RGB colors to apply.
 Values are contained themselves in a table, and can be either represented by a triplet of float numbers ranged from 0 to 1, each representing a color component, or a single integer number representing the three components at once:
  - `{ 1, 1, 0 }` sets the red and green components to full, outputting a bright yellow.
  - `{ 0xFFFF00 }` has the same effect, and will also provide a bright yellow.
@@ -70,17 +72,17 @@ Values are contained themselves in a table, and can be either represented by a t
 This allows both versions of `term.setPaletteColor()` to be supported through a single call, by unpacking the color table into the last argument:
 ```lua
 for color, tbl in pairs(palette) do
-    term.setPaletteColor(color, table.unpack(tbl))
+    term.setPaletteColor(2 ^ color, table.unpack(tbl))
 end
 ```
 
 Full example of a bimg color palette, featuring both color formats:
 ```lua
 {
-    [colors.red] = { 1, 0, 0 },
-    [colors.green] = { 0, 1, 0 },
-    [colors.blue] = { 0x0000FF },
-    [colors.gray] = { 0.5, 0.5, 0.5 }
+    [14] = { 1, 0, 0 },
+    [13] = { 0, 1, 0 },
+    [11] = { 0x0000FF },
+    [7] = { 0.5, 0.5, 0.5 }
 }
 ```
 
@@ -90,11 +92,11 @@ In the example below, both colors are modified and applied when rendering the fr
 ```lua
 -- In metadata
 palette = {
-    [colors.red] = { 0xFF0000 }
+    [14] = { 0xFF0000 }
 }
 
 -- In frame
 palette = {
-    [colors.blue] = { 0x0000FF }
+    [11] = { 0x0000FF }
 }
 ```
