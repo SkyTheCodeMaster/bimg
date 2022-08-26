@@ -27,11 +27,11 @@ bimg stores the following metadata along the image data in the file.
 | `date` | `string` | Date and time the image was created on, in ISO-8601 format. |
 | `width` | `number` | Width of the image in characters. |
 | `height` | `number` | Height of the image in characters. |
-| `animation` | `boolean` | Whether the file contains multiple frames and can be interpreted as an [animation](#animations).
-| (if animation) `secondsPerFrame` | `number` | Default length of each frame in seconds.
+| `animated` | `boolean` | Whether the file contains multiple frames and can be interpreted as an [animation](#animations).
+| (if animated) `secondsPerFrame` | `number` | Default length of each frame in seconds.
 | `palette` | `table` | Color palette table applied to the whole set of frames. For more information on palette formats, see [Palettes](#palettes).
 
-All metadata fields are optional, besides the `version` and `animation` fields. When the `animation` field is set to `true`, the `secondsPerFrame` field becomes required too.
+All metadata fields are optional, besides the `version` and `animated` fields. When the `animated` field is set to `true`, the `secondsPerFrame` is expected, but not required.
 
 # Image Data
 Aside the metadata are stored the frames of the image. At least one frame must be present for the file to be considered valid.
@@ -58,7 +58,7 @@ Spaces in any of the blit strings should make the corresponding color of the pix
 ## Animations
 bimg can support multiple frames per image file. Each frame is numerically indexed at the root of the table, along the metadata. This allows easy retrieval with `ipairs`.
 
-In the event multiple frames are provided, the image is considered as an animation. Consequently, the `animation` boolean should be set to `true`, and the `secondsPerFrame` field should be present.
+In the event multiple frames are provided, the image is considered as an animation. Consequently, the `animated` boolean should be set to `true`, and the `secondsPerFrame` field is expected. If it is not present, the default value is set to `0.05` seconds.
 
 # Palettes
 Palettes allows the modification of the existing 16 ComputerCraft colors available in the `colors` API to custom RGB values, applied to the whole terminal at once.
